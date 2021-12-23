@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class MaxCard extends StatelessWidget {
+class MaxCard extends StatefulWidget {
+  @override
+  _MaxCardState createState() => _MaxCardState();
+}
+
+class _MaxCardState extends State<MaxCard> {
+
+  int level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +24,15 @@ class MaxCard extends StatelessWidget {
         title: Text('My Id Card'),
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -59,7 +76,7 @@ class MaxCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              '8',
+              '$level',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
